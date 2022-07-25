@@ -7,6 +7,18 @@ struct node {
     struct node *link;
 };
 
+void count_of_nodes(struct node *head) {
+    int count = 0;
+    if(head == NULL)
+        printf("Linked list is empty");
+    struct node *ptr = NULL;
+    ptr = head;
+    while(ptr != NULL) {
+        printf("%d", ptr->data);
+        ptr = ptr->link;
+    }
+}
+
 int main() {
     // malloc returns the address of the memory as well. 
     // so the code below assigns the value of that 
@@ -19,14 +31,17 @@ int main() {
     head->data = 98;
     current->link = NULL;
     head->link = current;
-    
 
     current = malloc(sizeof(struct node));
     current->data = 3;
     current->link = NULL;
 
-    head->link->link = current;
+    head->link->link->link = current;
+
+    count_of_nodes(head);
 
     return 0;
 }
+
+
 
